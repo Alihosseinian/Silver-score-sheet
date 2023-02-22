@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ColumnInput from './components/column/index';
 import Star from './assets/star.svg';
 import './App.css';
@@ -10,7 +10,8 @@ function App() {
     { 0: '', 1: '', 2: '', 3: '', name: '' },
     { 0: '', 1: '', 2: '', 3: '', name: '' },
   ]);
-  console.log(value);
+  const [winners, setWinners] = useState([]);
+  console.log(winners);
 
   const reset = () => {
     const clear = [
@@ -35,8 +36,23 @@ function App() {
       value={value[i]}
       setValue={(obj) => set_to_index(i, obj)}
       key={number.toString()}
+      winners={winners}
     />
   ));
+
+  useEffect(() => {
+    let array_points = [];
+    for (let object of value) {
+      if (object[3] === '') {
+        break;
+      } else {
+        const points =
+          Number(object[0]) + Number(object[1]) + Number(object[2]) + Number(object[3]);
+        array_points.push(points);
+        setWinners(array_points.indexOf(Math.min(...array_points)));
+      }
+    }
+  }, [value]);
 
   return (
     <div className="page">
