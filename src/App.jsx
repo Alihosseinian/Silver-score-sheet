@@ -5,21 +5,24 @@ import './App.css';
 
 function App() {
   const [value, setValue] = useState([
-    { 0: '', 1: '', 2: '', 3: '' },
-    { 0: '', 1: '', 2: '', 3: '' },
-    { 0: '', 1: '', 2: '', 3: '' },
-    { 0: '', 1: '', 2: '', 3: '' },
+    { 0: '', 1: '', 2: '', 3: '', name: '' },
+    { 0: '', 1: '', 2: '', 3: '', name: '' },
+    { 0: '', 1: '', 2: '', 3: '', name: '' },
+    { 0: '', 1: '', 2: '', 3: '', name: '' },
   ]);
   console.log(value);
+
   const reset = () => {
     const clear = [
-      { 0: '', 1: '', 2: '', 3: '' },
-      { 0: '', 1: '', 2: '', 3: '' },
-      { 0: '', 1: '', 2: '', 3: '' },
-      { 0: '', 1: '', 2: '', 3: '' },
+      { 0: '', 1: '', 2: '', 3: '', name: '' },
+      { 0: '', 1: '', 2: '', 3: '', name: '' },
+      { 0: '', 1: '', 2: '', 3: '', name: '' },
+      { 0: '', 1: '', 2: '', 3: '', name: '' },
     ];
     setValue(clear);
   };
+
+  const numbers = [1, 2, 3, 4];
 
   const set_to_index = (index, obj) => {
     let value_copy = JSON.parse(JSON.stringify(value));
@@ -27,7 +30,6 @@ function App() {
     setValue(value_copy);
   };
 
-  const numbers = [1, 2, 3, 4];
   const listItems = numbers.map((number, i) => (
     <ColumnInput
       value={value[i]}

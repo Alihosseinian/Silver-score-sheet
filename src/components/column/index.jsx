@@ -6,7 +6,21 @@ import './style.scss';
 function ColumnInput(props) {
   return (
     <div className="column">
-      <Inputbox type="text" required disabled={false} />
+      <Inputbox
+        type="text"
+        required
+        value={props.value.name}
+        disabled={false}
+        handleChange={(e) =>
+          props.setValue({
+            0: props.value[0],
+            1: props.value[1],
+            2: props.value[2],
+            3: props.value[3],
+            name: e.target.value,
+          })
+        }
+      />
       <Inputbox
         type="phonenumber"
         required
@@ -18,6 +32,7 @@ function ColumnInput(props) {
             1: props.value[1],
             2: props.value[2],
             3: props.value[3],
+            name: props.value.name,
           })
         }
       />
@@ -32,6 +47,7 @@ function ColumnInput(props) {
             1: Number(e.target.value) || '',
             2: props.value[2],
             3: props.value[3],
+            name: props.value.name,
           })
         }
       />
@@ -54,6 +70,7 @@ function ColumnInput(props) {
             1: props.value[1],
             2: Number(e.target.value) || '',
             3: props.value[3],
+            name: props.value.name,
           })
         }
       />
@@ -78,6 +95,7 @@ function ColumnInput(props) {
             1: props.value[1],
             2: props.value[2],
             3: Number(e.target.value) || '',
+            name: props.value.name,
           })
         }
       />
