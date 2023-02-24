@@ -11,7 +11,6 @@ function App() {
     { 0: '', 1: '', 2: '', 3: '', name: '' },
   ]);
   const [winners, setWinners] = useState([]);
-  console.log(winners);
 
   const reset = () => {
     const clear = [
@@ -49,9 +48,26 @@ function App() {
         const points =
           Number(object[0]) + Number(object[1]) + Number(object[2]) + Number(object[3]);
         array_points.push(points);
-        setWinners(array_points.indexOf(Math.min(...array_points)));
       }
     }
+    const minArray = (array_points) => {
+      const min = array_points.reduce((acc, val) => Math.min(acc, val), Infinity);
+      const res = [];
+      for (let i = 0; i < array_points.length; i++) {
+        if (array_points[i] !== min) {
+          continue;
+        }
+        res.push(i);
+      }
+      return res;
+    };
+    setWinners(minArray(array_points));
+
+    // const change_color = (winners, value) => {
+    //   for(const index of winners){
+    //     value[index]=
+    //   }
+    // };
   }, [value]);
 
   return (
