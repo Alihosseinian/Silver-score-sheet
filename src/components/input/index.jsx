@@ -4,9 +4,10 @@ import React from 'react';
 import './style.scss';
 
 function Inputbox(props) {
+  console.log(props.check);
   return (
     <input
-      className="inputbox"
+      className={'inputbox' + ' ' + (props.check ? 'iswinner' : '')}
       type={props.type}
       required={props.required}
       disabled={props.disabled}

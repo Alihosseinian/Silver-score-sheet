@@ -20,6 +20,7 @@ function ColumnInput(props) {
             name: e.target.value,
           })
         }
+        check={props.isWinner}
       />
       <Inputbox
         type="phonenumber"
@@ -35,6 +36,7 @@ function ColumnInput(props) {
             name: props.value.name,
           })
         }
+        check={props.isWinner}
       />
       <Inputbox
         type="phonenumber"
@@ -50,6 +52,7 @@ function ColumnInput(props) {
             name: props.value.name,
           })
         }
+        check={props.isWinner}
       />
       <Inputbox
         disabled
@@ -58,6 +61,7 @@ function ColumnInput(props) {
             ? Number(props.value[0] || '') + Number(props.value[1] || '') || ''
             : ''
         }
+        check={props.isWinner}
       />
       <Inputbox
         type="phonenumber"
@@ -73,6 +77,7 @@ function ColumnInput(props) {
             name: props.value.name,
           })
         }
+        check={props.isWinner}
       />
       <Inputbox
         disabled
@@ -83,6 +88,7 @@ function ColumnInput(props) {
               Number(props.value[2] || '')
             : ''
         }
+        style={props.isWinner}
       />
       <Inputbox
         type="phonenumber"
@@ -98,6 +104,7 @@ function ColumnInput(props) {
             name: props.value.name,
           })
         }
+        style={props.isWinner}
       />
       <Inputbox
         disabled
@@ -112,6 +119,7 @@ function ColumnInput(props) {
               Number(props.value[3] || '')
             : ''
         }
+        style={props.isWinner}
       />
     </div>
   );

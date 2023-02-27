@@ -10,7 +10,9 @@ function App() {
     { 0: '', 1: '', 2: '', 3: '', name: '' },
     { 0: '', 1: '', 2: '', 3: '', name: '' },
   ]);
-  const [winners, setWinners] = useState([]);
+  let winners = [];
+  // const [winners, setWinners] = useState([]);
+  // console.log(winners);
 
   const reset = () => {
     const clear = [
@@ -35,19 +37,19 @@ function App() {
       value={value[i]}
       setValue={(obj) => set_to_index(i, obj)}
       key={number.toString()}
-      winners={winners}
+      isWinner={winners.includes(i)}
     />
   ));
 
   useEffect(() => {
-    let array_points = [];
+    let arrayPoints = [];
     for (let object of value) {
       if (object[3] === '') {
         break;
       } else {
         const points =
           Number(object[0]) + Number(object[1]) + Number(object[2]) + Number(object[3]);
-        array_points.push(points);
+        arrayPoints.push(points);
       }
     }
     const minArray = (array_points) => {
@@ -61,13 +63,7 @@ function App() {
       }
       return res;
     };
-    setWinners(minArray(array_points));
-
-    // const change_color = (winners, value) => {
-    //   for(const index of winners){
-    //     value[index]=
-    //   }
-    // };
+    winners = minArray(arrayPoints);
   }, [value]);
 
   return (
