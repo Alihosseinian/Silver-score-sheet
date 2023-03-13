@@ -1,7 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ColumnInput from './components/column/index';
 import Star from './assets/star.svg';
 import './App.css';
+
+const findWinners = (value) => {
+  const points = value.map((item) => {
+    return (
+      Number(item[0] || Infinity) +
+      Number(item[1] || Infinity) +
+      Number(item[2] || Infinity) +
+      Number(item[3] || Infinity)
+    );
+  });
+  const minPoint = Number(Math.min(...points));
+  return points
+    .map((item, index) => {
+      return item === minPoint ? index : undefined;
+    })
+    .filter((item) => item !== undefined);
+};
+
+const shouldShowWinner = (value) => {
+  return (
+    value.every((item) => {
+      return (
+        (item[0] !== '' && item[1] !== '' && item[2] !== '' && item[3] !== '') ||
+        (item[0] === '' && item[1] === '' && item[2] === '' && item[3] === '')
+      );
+    }) &&
+    value.some((item) => {
+      return item[0] !== '' || item[1] !== '' || item[2] !== '' || item[3] !== '';
+    })
+  );
+};
 
 function App() {
   const [value, setValue] = useState([
@@ -10,9 +41,6 @@ function App() {
     { 0: '', 1: '', 2: '', 3: '', name: '' },
     { 0: '', 1: '', 2: '', 3: '', name: '' },
   ]);
-  let winners = [];
-  // const [winners, setWinners] = useState([]);
-  // console.log(winners);
 
   const reset = () => {
     const clear = [
@@ -32,39 +60,19 @@ function App() {
     setValue(value_copy);
   };
 
-  const listItems = numbers.map((number, i) => (
-    <ColumnInput
-      value={value[i]}
-      setValue={(obj) => set_to_index(i, obj)}
-      key={number.toString()}
-      isWinner={winners.includes(i)}
-    />
-  ));
+  const checkWinners = shouldShowWinner(value);
+  const winners = findWinners(value);
 
-  useEffect(() => {
-    let arrayPoints = [];
-    for (let object of value) {
-      if (object[3] === '') {
-        break;
-      } else {
-        const points =
-          Number(object[0]) + Number(object[1]) + Number(object[2]) + Number(object[3]);
-        arrayPoints.push(points);
-      }
-    }
-    const minArray = (array_points) => {
-      const min = array_points.reduce((acc, val) => Math.min(acc, val), Infinity);
-      const res = [];
-      for (let i = 0; i < array_points.length; i++) {
-        if (array_points[i] !== min) {
-          continue;
-        }
-        res.push(i);
-      }
-      return res;
-    };
-    winners = minArray(arrayPoints);
-  }, [value]);
+  const listItems = numbers.map((number, i) => {
+    return (
+      <ColumnInput
+        value={value[i]}
+        setValue={(obj) => set_to_index(i, obj)}
+        key={number.toString()}
+        isWinner={winners.includes(i) && checkWinners}
+      />
+    );
+  });
 
   return (
     <div className="page">
