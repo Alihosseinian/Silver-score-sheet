@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ColumnInput from './components/column/index';
 import Star from './assets/star.svg';
 import './App.css';
@@ -60,7 +60,6 @@ function App() {
     setValue(value_copy);
   };
 
-  const checkWinners = shouldShowWinner(value);
   const winners = findWinners(value);
 
   const listItems = numbers.map((number, i) => {
@@ -69,10 +68,16 @@ function App() {
         value={value[i]}
         setValue={(obj) => set_to_index(i, obj)}
         key={number.toString()}
-        isWinner={winners.includes(i) && checkWinners}
+        isWinner={winners.includes(i) && shouldShowWinner(value)}
       />
     );
   });
+
+  useEffect(() => {
+    localStorage.setItem('value', JSON.stringify(value));
+    const items = JSON.parse(localStorage.getItem('value'));
+    console.log(items);
+  }, [value]);
 
   return (
     <div className="page">
