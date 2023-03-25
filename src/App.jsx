@@ -35,12 +35,17 @@ const shouldShowWinner = (value) => {
 };
 
 function App() {
-  const [value, setValue] = useState([
-    { 0: '', 1: '', 2: '', 3: '', name: '' },
-    { 0: '', 1: '', 2: '', 3: '', name: '' },
-    { 0: '', 1: '', 2: '', 3: '', name: '' },
-    { 0: '', 1: '', 2: '', 3: '', name: '' },
-  ]);
+  useEffect(() => {
+    if (localStorage.getItem('value') != undefined) {
+      setValue(JSON.parse(localStorage.getItem('value')));
+    }
+  }, []);
+
+  const [value, setValue] = useState(JSON.parse(localStorage.getItem('value')));
+
+  useEffect(() => {
+    localStorage.setItem('value', JSON.stringify(value));
+  }, [value]);
 
   const reset = () => {
     const clear = [
@@ -72,12 +77,6 @@ function App() {
       />
     );
   });
-
-  useEffect(() => {
-    localStorage.setItem('value', JSON.stringify(value));
-    const items = JSON.parse(localStorage.getItem('value'));
-    console.log(items);
-  }, [value]);
 
   return (
     <div className="page">
