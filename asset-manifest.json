@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/Silver-score-sheet/static/css/main.d1d803ab.css",
+    "main.js": "/Silver-score-sheet/static/js/main.06596e62.js",
+    "static/js/787.ba2cc7f5.chunk.js": "/Silver-score-sheet/static/js/787.ba2cc7f5.chunk.js",
+    "static/media/background2.jpg": "/Silver-score-sheet/static/media/background2.d5290da8f396a04976b7.jpg",
+    "static/media/Satisfy-Regular.ttf": "/Silver-score-sheet/static/media/Satisfy-Regular.26fe65e80d5457238bbb.ttf",
+    "static/media/star.svg": "/Silver-score-sheet/static/media/star.b28df3ee86f74efc920115fb5a6b3c19.svg",
+    "index.html": "/Silver-score-sheet/index.html",
+    "main.d1d803ab.css.map": "/Silver-score-sheet/static/css/main.d1d803ab.css.map",
+    "main.06596e62.js.map": "/Silver-score-sheet/static/js/main.06596e62.js.map",
+    "787.ba2cc7f5.chunk.js.map": "/Silver-score-sheet/static/js/787.ba2cc7f5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d1d803ab.css",
+    "static/js/main.06596e62.js"
+  ]
+}
