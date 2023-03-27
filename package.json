@@ -2,7 +2,7 @@
   "name": "silver",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alihosseinian.github.io/Silver-score-sheet",
+  "homepage": "https://alihosseinian.github.io/Silver-score-sheet/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
