@@ -35,13 +35,23 @@ const shouldShowWinner = (value) => {
 };
 
 function App() {
+  const [value, setValue] = useState(
+    localStorage.getItem('value')
+      ? JSON.parse(localStorage.getItem('value'))
+      : [
+          { 0: '', 1: '', 2: '', 3: '', name: '' },
+          { 0: '', 1: '', 2: '', 3: '', name: '' },
+          { 0: '', 1: '', 2: '', 3: '', name: '' },
+          { 0: '', 1: '', 2: '', 3: '', name: '' },
+        ]
+  );
+  console.log(value);
+
   useEffect(() => {
     if (localStorage.getItem('value') != undefined) {
       setValue(JSON.parse(localStorage.getItem('value')));
     }
   }, []);
-
-  const [value, setValue] = useState(JSON.parse(localStorage.getItem('value')));
 
   useEffect(() => {
     localStorage.setItem('value', JSON.stringify(value));
